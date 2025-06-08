@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- 共通レイアウトの中に「#main-content」を差し込む -->
+<div th:replace="skilllog/layout :: layout(~{::#main-content})">
+	<div id="main-content">
+	<div th:if="${successMessage}" class="alert alert-success" role="alert">
+	    <span th:text="${successMessage}"></span>
+	</div>
+        <h1>スキルログ一覧</h1>
+		<h5>カテゴリで絞り込み</h5>
+		<div class="mb-3">
+			<a th:href="@{/skilllog-web}" 
+			   class="btn btn-outline-secondary btn-sm me-2"
+			   th:classappend="${selectedCategory == null} ? ' active' : ''">すべて</a>
+		    <span th:each="category : ${categories}">
+		        <a th:href="@{'/skilllog-web/category/' + ${category.id}}"
+		           th:text="${category.name}"
+		           class="btn btn-outline-primary btn-sm me-2"
+				   th:classappend="${selectedCategory != null and selectedCategory.id == category.id} ? ' active' : ''"></a>
+		    </span>
+		</div>
+		<div th:if="${selectedCategory != null}" class="mb-2">
+		  <strong th:text="'『' + ${selectedCategory.name} + '』カテゴリのログを表示中'"></strong>
+		</div>
+        <table class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>説明</th>
+                    <th>時間（分）</th>
+                    <th>日付</th>
+                    <th>カテゴリ</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="log : ${skillLogs}">
+                    <td th:text="${log.id}">1</td>
+                    <td th:text="${log.description}">説明</td>
+                    <td th:text="${log.minutes}">30</td>
+                    <td th:text="${log.date}">2025-05-25</td>
+					<td>
+					  <a th:href="@{'/skilllog-web/category/' + ${log.category.id}}">
+					    [[${log.category.name}]]
+					  </a>
+					</td>
+
+                    <td>
+                        <a th:href="@{'/skilllog-web/edit/' + ${log.id}}" class="btn btn-sm btn-primary">編集</a>
+                        <a th:href="@{'/skilllog-web/delete/' + ${log.id}}" class="btn btn-sm btn-danger" onclick="return confirm('本当に削除しますか？');">削除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a th:href="@{/skilllog-web/new}" class="btn btn-success mt-3">＋ 新規登録</a>
+    </div>
+</div>
+</html>
