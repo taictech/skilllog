@@ -1,12 +1,13 @@
-package com.example.demo.service;
+package com.example.service;
 
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.SkillLog;
-import com.example.demo.repository.SkillLogRepository;
+import com.example.entity.SkillLog;
+import com.example.repository.SkillLogRepository;
 
 @Service
 public class SkillLogService {

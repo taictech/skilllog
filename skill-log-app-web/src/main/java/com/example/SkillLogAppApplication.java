@@ -1,15 +1,20 @@
 //package com.example.demo;?
-package com.example.demo;
+package com.example;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
-import com.example.demo.entity.Category;
-import com.example.demo.repository.CategoryRepository;
+import com.example.entity.Category;
+import com.example.repository.CategoryRepository;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {
+	    "com.example",        // controller がある
+	    "com.example.service"      // service がある
+	})
 public class SkillLogAppApplication {
 
 	public static void main(String[] args) {

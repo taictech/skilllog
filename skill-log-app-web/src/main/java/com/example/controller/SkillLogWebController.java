@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.demo.entity.Category;
-import com.example.demo.entity.SkillLog;
-import com.example.demo.service.CategoryService;
-import com.example.demo.service.SkillLogService;
+import com.example.entity.Category;
+import com.example.entity.SkillLog;
+import com.example.service.CategoryService;
+import com.example.service.SkillLogService;
 
 import jakarta.validation.Valid;
 

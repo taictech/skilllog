@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.service.SkillLogService;
+import com.example.service.SkillLogService;
 import com.example.entity.SkillLog;
 
 @Controller

@@ -3,11 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.example</groupId>
-	    <artifactId>skill-log-parent</artifactId>
-	    <version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
+    	<groupId>com.example</groupId>
+    	<artifactId>skill-log-parent</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    	<relativePath>../skill-log-parent/pom.xml</relativePath>  <!-- これ重要！ -->
 	</parent>
+
 	<groupId>com.example</groupId>
 	<artifactId>skill-log-app-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -40,11 +41,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	    <dependency>
-	        <groupId>com.example</groupId>
-	        <artifactId>skill-log-app-web</artifactId>
-	        <version>0.0.1-SNAPSHOT</version>
-	    </dependency>
+		<dependency>
+  			<groupId>com.example</groupId>
+ 			 <artifactId>skill-log-domain</artifactId>
+ 			 <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+  			<groupId>org.springframework.boot</groupId>
+ 			 <artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<plugins>
