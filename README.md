@@ -29,7 +29,7 @@
 以下の手順でローカル環境にセットアップできます。
 
 ```bash
-git clone https://github.com/your-username/skilllog-app.git
+git clone https://github.com/taictech/skilllog.git
 cd skilllog-app
 ./mvnw spring-boot:run
 ```
