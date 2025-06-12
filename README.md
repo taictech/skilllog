@@ -17,11 +17,13 @@
 
 ## ✨ 構成
 
+```
 skilllog/
 ├── skill-log-parent # 親プロジェクト（依存・構成管理）
 ├── skill-log-app-web # Webアプリ（Thymeleaf + Controller）
 ├── skill-log-app-api # REST API（Spring Web）
 ├── skill-log-domain # Entity + Repository（ドメイン層）
+```
 
 ---
 ## 🛠 使用技術
