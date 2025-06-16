@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>カテゴリフォーム</title>
+</head>
+<body>
+    <h1 th:text="${category.id == null} ? 'カテゴリ作成' : 'カテゴリ編集'"></h1>
+
+    <form th:action="@{${category.id == null} ? '/categories' : '/categories/update/' + ${category.id}}"
+          th:object="${category}" method="post">
+        <label>カテゴリ名：</label>
+        <input type="text" th:field="*{name}" />
+        <br/><br/>
+        <button type="submit">保存</button>
+    </form>
+
+    <br/>
+    <a th:href="@{/categories}">← 戻る</a>
+</body>
+</html>

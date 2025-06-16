@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>カテゴリ一覧</title>
+</head>
+<body>
+    <h1>カテゴリ一覧</h1>
+
+    <a th:href="@{/categories/new}">＋ 新規カテゴリ作成</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>カテゴリ名</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}">1</td>
+                <td th:text="${category.name}">開発</td>
+                <td>
+                    <a th:href="@{'/categories/edit/' + ${category.id}}">編集</a>
+                    |
+                    <a th:href="@{'/categories/delete/' + ${category.id}}"
+                       onclick="return confirm('本当に削除しますか？')">削除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
