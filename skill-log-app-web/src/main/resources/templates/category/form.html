@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>カテゴリフォーム</title>
-</head>
-<body>
-    <h1 th:text="${category.id == null} ? 'カテゴリ作成' : 'カテゴリ編集'"></h1>
+<!-- 共通レイアウトの中に「#main-content」を差し込む -->
+<div th:replace="layout/layout :: layout(~{::#main-content})">
+	<div id="main-content">
+		<div th:if="${successMessage}" class="alert alert-success" role="alert">
+			<span th:text="${successMessage}"></span>
+		</div>
 
-    <form th:action="@{${category.id == null} ? '/categories' : '/categories/update/' + ${category.id}}"
-          th:object="${category}" method="post">
-        <label>カテゴリ名：</label>
-        <input type="text" th:field="*{name}" />
-        <br/><br/>
-        <button type="submit">保存</button>
-    </form>
+		<h1 th:text="${category.id == null} ? 'カテゴリ作成' : 'カテゴリ編集'"></h1>
 
-    <br/>
-    <a th:href="@{/categories}">← 戻る</a>
-</body>
+		<form th:action="@{${category.id == null} ? '/categories' : '/categories/update/' + ${category.id}}"
+		      th:object="${category}" method="post">
+
+			<div class="mb-3">
+				<label for="name" class="form-label">カテゴリ名：</label>
+				<input type="text" th:field="*{name}" id="name" class="form-control" />
+
+				<!-- バリデーションエラーメッセージ -->
+				<div th:if="${#fields.hasErrors('name')}" class="text-danger mt-1">
+					<p th:errors="*{name}">カテゴリ名エラー</p>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-primary">保存</button>
+			<a th:href="@{/categories}" class="btn btn-secondary ms-2">← 戻る</a>
+		</form>
+	</div>
+</div>
 </html>
