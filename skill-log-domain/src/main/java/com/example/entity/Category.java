@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -16,6 +18,8 @@ public class Category {
 	private Long skillId;
 	
 	/** スキル名 */
+    @NotBlank(message = "カテゴリ名は必須です")
+    @Size(max = 30, message = "カテゴリ名は30文字以内で入力してください")
 	private String name;
 	
     // デフォルトコンストラクタ（JPA用に必須）
